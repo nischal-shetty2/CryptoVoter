@@ -1,4 +1,4 @@
-import { getPrice } from "@/app/api/route";
+import { getPrice } from "@/app/api";
 import { CryptoData } from "@/app/components/CryptoData";
 import { GeccoRef } from "@/app/components/ui/GeccoRef";
 import { VotingButton } from "@/app/components/ui/VotingButton";

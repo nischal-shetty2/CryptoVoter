@@ -3,7 +3,6 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../../util/cn";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export const FloatingNav = ({
   navItems,
@@ -16,7 +15,6 @@ export const FloatingNav = ({
   }[];
   className?: string;
 }) => {
-  const router = useRouter();
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -49,7 +47,7 @@ export const FloatingNav = ({
         ))}
         <button
           onClick={() => {
-            router.push("/");
+            window.open("https://github.com/nischal-shetty2/CryptoVoter");
           }}
           className="border text-sm font-semibold relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full hover:text-gray-200 ">
           <span>CryptoVoter</span>

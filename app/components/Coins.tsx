@@ -1,4 +1,4 @@
-import { getPrice } from "../api/route";
+import { getPrice } from "../api";
 import { CoinsCard } from "./CoinsCard";
 
 export const Coins = async () => {
