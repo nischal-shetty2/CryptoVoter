@@ -2,24 +2,33 @@ import { getPrice } from "@/app/api";
 import { CryptoData } from "@/app/components/CryptoData";
 import { GeccoRef } from "@/app/components/ui/GeccoRef";
 import { VotingButton } from "@/app/components/ui/VotingButton";
-import axios from "axios";
+import { ethSchema } from "@/app/models/dbSchema";
+import dbConnect from "@/app/util/dbConnect";
 
 export default async function Ethereum() {
-  const voteData = await axios.get(`${process.env.NEXT_PUBLIC_BASE}/api/eth`);
-  const votes = voteData.data;
-  const price = await getPrice();
+  try {
+    await dbConnect();
+    const btcData = await ethSchema.find({});
+    const votes = {
+      bullish: btcData[0].bullish,
+      bearish: btcData[0].bearish,
+    };
+    const price = await getPrice();
 
-  return (
-    <div>
+    return (
       <div>
-        <CryptoData price={price.ethereum.usd} crypto="Ethereum" />
+        <div>
+          <CryptoData price={price.ethereum.usd} crypto="Ethereum" />
+        </div>
+        <div>
+          <VotingButton crypto="eth" votes={votes} />
+        </div>
+        <div className=" absolute bottom-2 left-2">
+          <GeccoRef />
+        </div>
       </div>
-      <div>
-        <VotingButton crypto="eth" votes={votes} />
-      </div>
-      <div className=" absolute bottom-2 left-2">
-        <GeccoRef />
-      </div>
-    </div>
-  );
+    );
+  } catch (e: any) {
+    return <div>Failed to fetch Ethereum data. Please try again later.</div>;
+  }
 }

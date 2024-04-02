@@ -2,24 +2,33 @@ import { getPrice } from "@/app/api";
 import { CryptoData } from "@/app/components/CryptoData";
 import { GeccoRef } from "@/app/components/ui/GeccoRef";
 import { VotingButton } from "@/app/components/ui/VotingButton";
-import axios from "axios";
+import { solSchema } from "@/app/models/dbSchema";
+import dbConnect from "@/app/util/dbConnect";
 
 export default async function Solana() {
-  const voteData = await axios.get(`${process.env.NEXT_PUBLIC_BASE}/api/sol`);
-  const votes = voteData.data;
-  const price = await getPrice();
+  try {
+    await dbConnect();
+    const btcData = await solSchema.find({});
+    const votes = {
+      bullish: btcData[0].bullish,
+      bearish: btcData[0].bearish,
+    };
+    const price = await getPrice();
 
-  return (
-    <div>
+    return (
       <div>
-        <CryptoData price={price.solana.usd} crypto="Solana" />
+        <div>
+          <CryptoData price={price.solana.usd} crypto="Solana" />
+        </div>
+        <div>
+          <VotingButton crypto="sol" votes={votes} />
+        </div>
+        <div className=" absolute bottom-2 left-2">
+          <GeccoRef />
+        </div>
       </div>
-      <div>
-        <VotingButton crypto="sol" votes={votes} />
-      </div>
-      <div className=" absolute bottom-2 left-2">
-        <GeccoRef />
-      </div>
-    </div>
-  );
+    );
+  } catch (e: any) {
+    return <div>Failed to fetch Solana data. Please try again later.</div>;
+  }
 }
