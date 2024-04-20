@@ -9,9 +9,6 @@ export default async function Home() {
       <div>
         <Coins />
       </div>
-      <div className=" sticky bottom-3 pl-3">
-        <GeccoRef />
-      </div>
     </div>
   );
 }
