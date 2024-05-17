@@ -14,11 +14,10 @@ export default async function Solana() {
       bearish: btcData[0].bearish,
     };
     const price = await getPrice();
-    const tempPrice = 167.23;
     return (
       <div>
         <div>
-          <CryptoData price={tempPrice} crypto="Solana" />
+          <CryptoData price={price.solana.usd} crypto="Solana" />
         </div>
         <div>
           <VotingButton crypto="sol" votes={votes} />
