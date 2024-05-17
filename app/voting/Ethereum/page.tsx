@@ -13,17 +13,12 @@ export default async function Ethereum() {
       bullish: btcData[0].bullish,
       bearish: btcData[0].bearish,
     };
-    //const price = await getPrice();
-    const tempPrice = {
-      ethereum: {
-        usd: 167.34,
-      },
-    };
+    const price = await getPrice();
 
     return (
       <div>
         <div>
-          <CryptoData price={tempPrice.ethereum.usd} crypto="Ethereum" />
+          <CryptoData price={price.ethereum.usd} crypto="Ethereum" />
         </div>
         <div>
           <VotingButton crypto="eth" votes={votes} />
@@ -37,6 +32,7 @@ export default async function Ethereum() {
     return (
       <div className=" absolute left-0 top-10">
         Failed to fetch Ethereum data. Please try again later.
+        {e}
       </div>
     );
   }
