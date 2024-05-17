@@ -32,7 +32,6 @@ export default async function Ethereum() {
     return (
       <div className=" absolute left-0 top-10">
         Failed to fetch Ethereum data. Please try again later.
-        {e}
       </div>
     );
   }

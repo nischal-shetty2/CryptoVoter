@@ -32,7 +32,6 @@ export default async function Bitcoin() {
     return (
       <div className=" absolute left-0 top-10">
         Failed to fetch Bitcoin data. Please try again later.
-        {e}
       </div>
     );
   }

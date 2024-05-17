@@ -14,6 +14,7 @@ export default async function Solana() {
       bearish: btcData[0].bearish,
     };
     const price = await getPrice();
+
     return (
       <div>
         <div>
@@ -31,7 +32,6 @@ export default async function Solana() {
     return (
       <div className=" absolute left-0 top-10">
         Failed to fetch Solana data. Please try again later.
-        {e}
       </div>
     );
   }
