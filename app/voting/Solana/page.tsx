@@ -14,11 +14,11 @@ export default async function Solana() {
       bearish: btcData[0].bearish,
     };
     const price = await getPrice();
-
+    const tempPrice = 167.23;
     return (
       <div>
         <div>
-          <CryptoData price={price.solana.usd} crypto="Solana" />
+          <CryptoData price={tempPrice} crypto="Solana" />
         </div>
         <div>
           <VotingButton crypto="sol" votes={votes} />
@@ -29,6 +29,10 @@ export default async function Solana() {
       </div>
     );
   } catch (e: any) {
-    return <div>Failed to fetch Solana data. Please try again later.</div>;
+    return (
+      <div className=" absolute left-0 top-10">
+        Failed to fetch Solana data. Please try again later.
+      </div>
+    );
   }
 }
