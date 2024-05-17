@@ -13,12 +13,17 @@ export default async function Ethereum() {
       bullish: btcData[0].bullish,
       bearish: btcData[0].bearish,
     };
-    const price = await getPrice();
+    //const price = await getPrice();
+    const tempPrice = {
+      ethereum: {
+        usd: 167.34,
+      },
+    };
 
     return (
       <div>
         <div>
-          <CryptoData price={price.ethereum.usd} crypto="Ethereum" />
+          <CryptoData price={tempPrice.ethereum.usd} crypto="Ethereum" />
         </div>
         <div>
           <VotingButton crypto="eth" votes={votes} />
