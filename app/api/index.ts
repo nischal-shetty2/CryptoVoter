@@ -2,7 +2,12 @@
 import axios from "axios";
 
 export async function getPrice() {
-  const response = await axios.get(process.env.API!);
+  const response = await axios.get(process.env.API!, {
+    headers: {
+      accept: "application/json",
+      "x-cg-api-key": process.env.COINGECKO_API_KEY!,
+    },
+  });
   //Structure of response
   // const response = {
   //   data: {
