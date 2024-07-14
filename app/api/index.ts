@@ -3,8 +3,7 @@ import axios from "axios";
 
 export async function getPrice() {
   const response = await axios.get(process.env.API!);
-
-  //Example Data for dev
+  //Structure of response
   // const response = {
   //   data: {
   //     bitcoin: {
@@ -14,7 +13,7 @@ export async function getPrice() {
   //       usd: 3565.58,
   //     },
   //     solana: {
-  //       usd: 186.14,
+  //       usd: 170.14,
   //     },
   //   },
   // };

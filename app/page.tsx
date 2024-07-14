@@ -1,5 +1,4 @@
 import { Coins } from "./components/Coins";
-import { GeccoRef } from "./components/ui/GeccoRef";
 import { NavBar } from "./components/ui/NavBar";
 
 export default async function Home() {
