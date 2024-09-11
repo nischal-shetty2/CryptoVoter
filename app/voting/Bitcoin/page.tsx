@@ -4,12 +4,12 @@ import { btcSchema } from "@/app/models/dbSchema";
 
 export default async function Bitcoin() {
   try {
-    const data = await fetchCryptoData(btcSchema, "bitcoin");
+    const { votes, price } = await fetchCryptoData(btcSchema, "bitcoin");
     return (
       <CryptoPage
         crypto="Bitcoin"
-        price={data.price}
-        votes={data.votes}
+        price={price}
+        votes={votes}
         cryptoKey="btc"
       />
     );

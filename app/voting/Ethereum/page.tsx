@@ -4,12 +4,12 @@ import { ethSchema } from "@/app/models/dbSchema";
 
 export default async function Ethereum() {
   try {
-    const data = await fetchCryptoData(ethSchema, "ethereum");
+    const { votes, price } = await fetchCryptoData(ethSchema, "ethereum");
     return (
       <CryptoPage
         crypto="Ethereum"
-        price={data.price}
-        votes={data.votes}
+        price={price}
+        votes={votes}
         cryptoKey="eth"
       />
     );

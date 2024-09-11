@@ -4,23 +4,15 @@ import { Model } from "mongoose";
 
 export async function fetchCryptoData(schema: Model<any>, cryptoKey: string) {
   await dbConnect();
-  if (cryptoKey === "solana") {
-    const cryptoData = await schema.find({});
-    return {
-      votes: {
-        bullish: cryptoData[0].bullish,
-        bearish: cryptoData[0].bearish,
-      },
-    };
-  }
+
   const cryptoData = await schema.find({});
   const priceData = await getPrice();
 
   return {
     price: priceData[cryptoKey].usd,
     votes: {
-      bullish: cryptoData[0].bullish,
-      bearish: cryptoData[0].bearish,
+      bullish: cryptoData[0].bullish | 0,
+      bearish: cryptoData[0].bearish | 0,
     },
   };
 }

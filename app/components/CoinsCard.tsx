@@ -77,14 +77,13 @@ export function CoinsCard({ price, crypto }: cardTypes) {
             translateZ={10}
             translateX={5}
             as="button"
+            onClick={() => {
+              setLoading(true);
+              router.push(`/voting/${crypto}`);
+            }}
             className=" mt-12 px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-md font-normal hover:text-white hover:bg-zinc-950">
             {!loading ? (
-              <div
-                className="flex ml-2"
-                onClick={() => {
-                  setLoading(true);
-                  router.push(`/voting/${crypto}`);
-                }}>
+              <div className="flex ml-2">
                 vote
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                   <path
