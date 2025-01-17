@@ -1,18 +1,18 @@
 "use server";
 import axios from "axios";
-import NodeCache from "node-cache";
+// import NodeCache from "node-cache";
 
-// Initialize cache (cache for 10 minutes)
-const priceCache = new NodeCache({ stdTTL: 600, checkperiod: 620 });
+// // Initialize cache (cache for 10 minutes)
+// const priceCache = new NodeCache({ stdTTL: 600, checkperiod: 620 });
 
 export async function getPrice() {
-  const cacheKey = "cryptoPrices";
+  // const cacheKey = "cryptoPrices";
 
-  // Check if data is already in cache
-  const cachedData = priceCache.get(cacheKey);
-  if (cachedData) {
-    return cachedData;
-  }
+  // // Check if data is already in cache
+  // const cachedData = priceCache.get(cacheKey);
+  // if (cachedData) {
+  //   return cachedData;
+  // }
 
   // If not cached, fetch from the API
   try {
@@ -23,8 +23,8 @@ export async function getPrice() {
       },
     });
 
-    // Cache the API response
-    priceCache.set(cacheKey, response.data);
+    // // Cache the API response
+    // priceCache.set(cacheKey, response.data);
 
     return response.data;
   } catch (error) {
