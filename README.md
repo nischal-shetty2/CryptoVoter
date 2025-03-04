@@ -1,6 +1,6 @@
 # CryptoVoter
 
-A webapp where the user gets to vote based on what they think direction of market will be! We can also understand the market sentiments through this tool
+A webapp where the user gets to vote based on what you think the direction of market will be! We can also understand the market sentiments through the stats
 
 ## Getting Started
 
